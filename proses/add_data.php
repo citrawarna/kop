@@ -60,6 +60,8 @@
 				VALUES 
 				('$tanggal', '$id_nasabah','$nama_peminjaman','$jumlah','$id_angsuran', '$id_user', '$keterangan' , '$jumlah', 'n')");
 			
+			//mengupdate status nasabah jika melakukan pinjaman maka akan jadi 0, bila 0 maka nasabah tidak 
+			//dapat melakukan peminjaman lagi
 			$update = mysqli_query($connect, "UPDATE nasabah SET status='0' WHERE id_nasabah = '$id_nasabah' ");
 
 			if($insert == true) {
@@ -80,6 +82,7 @@
 				WHERE id_peminjaman = '$id_peminjaman'");
 			$pemj = mysqli_fetch_array($pem);
 
+			//menghitung sisa pinjaman 
 			$sisa_peminjaman = $pemj['hutang'] - $jumlah_angsur;
 
 			//print_r($pemj['hutang']);

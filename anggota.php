@@ -3,10 +3,17 @@
   <?php require_once "view/sidebar.php"; ?>
 
     <h2>Data Anggota Nasabah</h2>
-
+	
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
 	  Tambah Data
 	</button>
+
+	<div style="float:right">
+		<form action="search_data.php" method="get">
+			<input type="text"> 
+			<input type="submit" class="btn btn-sm btn-secondary" value="Cari">
+		</form>
+	</div>
 
     <br><br>
     <div class="table-responsive">
