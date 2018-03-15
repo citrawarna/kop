@@ -32,7 +32,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link <?php if($link == $url.'angsuran.php'){echo "active"; } ?>" href="angsuran.php">
               <span data-feather="check-circle"></span>
               Angsuran
             </a>

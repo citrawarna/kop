@@ -56,19 +56,49 @@
 			$keterangan = $_POST['keterangan'];
 
 			$insert = mysqli_query($connect, "INSERT INTO peminjaman 
-				(tanggal, id_nasabah, nama_peminjaman, jumlah, id_angsuran, id_user, keterangan)
+				(tanggal, id_nasabah, nama_peminjaman, jumlah, id_angsuran, id_user, keterangan, hutang, lunas)
 				VALUES 
-				('$tanggal', '$id_nasabah','$nama_peminjaman','$jumlah','$id_angsuran', '$id_user', '$keterangan')");
+				('$tanggal', '$id_nasabah','$nama_peminjaman','$jumlah','$id_angsuran', '$id_user', '$keterangan' , '$jumlah', 'n')");
 			
 			$update = mysqli_query($connect, "UPDATE nasabah SET status='0' WHERE id_nasabah = '$id_nasabah' ");
 
 			if($insert == true) {
-				echo "insert sukses";
+				echo "<script>alert('Data Berhasil ditambah'); location.href='../peminjaman.php'</script>";
 			} else {
 				echo "gagal";
 			}
 
 			break;
+
+		case 'angsuran':
+			$tanggal_angsur = $_POST['tanggal_angsur'];
+			$id_peminjaman = $_POST['id_peminjaman'];
+			$jumlah_angsur = $_POST['jumlah_angsur'];
+			$keterangan_angsuran = $_POST['keterangan_angsuran'];
+
+			$pem = mysqli_query($connect, "SELECT * FROM peminjaman 
+				WHERE id_peminjaman = '$id_peminjaman'");
+			$pemj = mysqli_fetch_array($pem);
+
+			$sisa_peminjaman = $pemj['hutang'] - $jumlah_angsur;
+
+			//print_r($pemj['hutang']);
+
+			$insert = mysqli_query($connect, "INSERT INTO detail_angsuran VALUES ('', '$id_peminjaman', '$tanggal_angsur',
+			'$jumlah_angsur', '$sisa_peminjaman', '$keterangan_angsuran' )");
+
+			$updateHutang = mysqli_query($connect, "UPDATE peminjaman SET hutang='$sisa_peminjaman' WHERE id_peminjaman = '$id_peminjaman' ");
+
+			$nasabah = $pemj['id_nasabah'];
+
+			if($sisa_peminjaman == 0){
+				$updateLunas = mysqli_query($connect, "UPDATE peminjaman SET lunas='y' WHERE id_peminjaman = '$id_peminjaman' ");
+				$updateNasabah = mysqli_query($connect, "UPDATE nasabah SET status='1' where id_nasabah = '$nasabah' ");
+			}
+
+
+
+		break;
 		
 		default:
 			# code...
