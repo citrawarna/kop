@@ -17,7 +17,6 @@
 			echo "<script>alert('Silahkan Login terlebih dahulu!'); location.href='index.php'</script>";
 		}
 	}
-
 	
 	
  ?>

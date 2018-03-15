@@ -1,3 +1,20 @@
+ <?php
+    include_once "proses/config.php";
+    cek_login();
+    //untuk title dinamis
+    if($link == $url.'dashboard.php'){
+      $title =  "Dashboard"; 
+    } else if($link == $url.'staff.php'){
+      $title = "Staff";
+    } else if($link == $url.'anggota.php'){
+      $title = "Anggota";
+    } else if($link == $url.'peminjaman.php'){
+      $title = "Peminjaman";
+    } else if($link == $url.'angsuran.php'){
+      $title = "Angsuran";
+    }
+
+  ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +24,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/kop2.jpg">
 
-    <title>Dashboard - Koperasi Error Logic</title>
+    <title> <?= $title ?> - Koperasi Error Logic</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
