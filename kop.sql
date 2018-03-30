@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Mar 2018 pada 09.57
+-- Generation Time: 30 Mar 2018 pada 10.00
 -- Versi Server: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -61,7 +61,7 @@ CREATE TABLE `detail_angsuran` (
 --
 
 INSERT INTO `detail_angsuran` (`id_da`, `id_peminjaman`, `tanggal_angsur`, `jumlah_angsur`, `sisa_pinjaman`, `keterangan_angsuran`) VALUES
-(0, 1, '2018-03-30', 1000, 4000, 'Bayar Utang Pertama');
+(1, 2, '2018-03-30', 1000, 4000, 'Bayar Utang Pertama');
 
 -- --------------------------------------------------------
 
@@ -114,7 +114,7 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `id_user`, `id_nasabah`, `id_angsuran`, `nama_peminjaman`, `jumlah`, `hutang`, `tanggal`, `keterangan`, `lunas`) VALUES
-(1, 1, 1, 1, 'Utang Dagang', 5000, 4000, '2018-03-30', 'Pinjam Bosque', 'n');
+(2, 1, 1, 1, 'Utang Dagang', 5000, 4000, '2018-03-30', 'Pinjam ', 'n');
 
 -- --------------------------------------------------------
 
@@ -154,6 +154,12 @@ ALTER TABLE `angsuran`
   ADD PRIMARY KEY (`id_angsuran`);
 
 --
+-- Indexes for table `detail_angsuran`
+--
+ALTER TABLE `detail_angsuran`
+  ADD PRIMARY KEY (`id_da`);
+
+--
 -- Indexes for table `nasabah`
 --
 ALTER TABLE `nasabah`
@@ -184,6 +190,11 @@ ALTER TABLE `user`
 ALTER TABLE `angsuran`
   MODIFY `id_angsuran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `detail_angsuran`
+--
+ALTER TABLE `detail_angsuran`
+  MODIFY `id_da` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `nasabah`
 --
 ALTER TABLE `nasabah`
@@ -192,7 +203,7 @@ ALTER TABLE `nasabah`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
