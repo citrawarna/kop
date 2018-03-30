@@ -14,7 +14,7 @@
 			<input type="submit" class="btn btn-sm btn-secondary" value="Cari">
 		</form>
 	</div>
-
+	<?= msghandling() ?>
     <br><br>
     <div class="table-responsive">
       	<table class="table table-sm">

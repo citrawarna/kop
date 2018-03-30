@@ -65,7 +65,8 @@
 			$update = mysqli_query($connect, "UPDATE nasabah SET status='0' WHERE id_nasabah = '$id_nasabah' ");
 
 			if($insert == true) {
-				echo "<script>alert('Data Berhasil ditambah'); location.href='../peminjaman.php'</script>";
+				pesan("success", "Data berhasil ditambah", "../peminjaman.php");
+				//echo "<script>alert('Data Berhasil ditambah'); location.href='../peminjaman.php'</script>";
 			} else {
 				echo "gagal";
 			}
@@ -98,6 +99,8 @@
 				$updateLunas = mysqli_query($connect, "UPDATE peminjaman SET lunas='y' WHERE id_peminjaman = '$id_peminjaman' ");
 				$updateNasabah = mysqli_query($connect, "UPDATE nasabah SET status='1' where id_nasabah = '$nasabah' ");
 			}
+
+			pesan("success", "Data berhasil ditambah", "../angsuran.php");
 
 
 

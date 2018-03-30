@@ -8,6 +8,8 @@
 	  Tambah Data
 	</button>
 
+	<?= msghandling() ?>
+	
     <br><br>
     <div class="table-responsive">
       	<table class="table table-sm">
